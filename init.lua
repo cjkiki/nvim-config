@@ -1,1 +1,1 @@
-print "Neovim config loaded ..."
+require "core.options"
