@@ -1,5 +1,6 @@
 require("lazy").setup({
   { import = "plugins.ui" },
+  { import = "plugins.editor" },
 }, {
   defaults = {
     lazy = true,
