@@ -1,4 +1,5 @@
 return {
+  -- colorscheme (gruber-darker)
   {
     "blazkowolf/gruber-darker.nvim",
     lazy     = false,
@@ -25,5 +26,26 @@ return {
       require "gruber-darker" .setup(opts)
       vim.cmd.colorscheme("gruber-darker")
     end,
-  }
+  },
+
+  -- statusline (lualine)
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+
+    config = function()
+      require "lualine" .setup({
+        options = {
+          theme = "auto",
+          component_separators = {},
+          section_separators   = {},
+          globalstatus = true,
+        },
+      })
+    end,
+  },
+
+  -- icons (dependency)
+  { "nvim-tree/nvim-web-devicons", lazy = true },
 }
