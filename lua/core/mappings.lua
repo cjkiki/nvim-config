@@ -37,8 +37,8 @@ n("<C-u>", "<C-u>zz", "Half page up center")
 
 -- search
 n("<Esc>", "<cmd>nohlsearch<CR>", "Clear search highlights")
-n("n",     "nzzzv",               "Next highlight center")
-n("N",     "Nzzzv",               "Previous highlight center")
+n("n",     "nzzzv",               "Next search highlight center")
+n("N",     "Nzzzv",               "Previous search highlight center")
 
 -- selection
 v("J", ":m '>+1<CR>gv=gv", "Move selection down")
@@ -49,8 +49,8 @@ v("<", "<gv", "Move indent in")
 v(">", ">gv", "Move indent out")
 
 -- files
-n("<leader>w",  "<cmd>w<CR>",   "Save")
-n("<leader>wa", "<cmd>wa<CR>",  "Save all")
+n("<leader>w",  "<cmd>w<CR>",   "Save file")
+n("<leader>wa", "<cmd>wa<CR>",  "Save all files")
 n("<leader>q",  "<cmd>q<CR>",   "Quit")
 n("<leader>qa", "<cmd>qa!<CR>", "Quit all")
 
@@ -78,8 +78,8 @@ n("<C-Left>",  "<cmd>vertical resize -2<CR>", "Decrease split width")
 n("<C-Right>", "<cmd>vertical resize +2<CR>", "Increase split width")
 
 -- quickfix
-n("<leader>qn", "<cmd>cnext<CR>",  "Next QF entry")
-n("<leader>qp", "<cmd>cprev<CR>",  "Previous QF entry")
+n("<leader>qn", "<cmd>cnext<CR>",  "Next qf entry")
+n("<leader>qp", "<cmd>cprev<CR>",  "Previous qf entry")
 n("<leader>ln", "<cmd>lnext<CR>",  "Next loclist entry")
 n("<leader>lp", "<cmd>lprev<CR>",  "Previous loclist entry")
 n("<leader>co", "<cmd>copen<CR>",  "Open quickfix")
