@@ -2,7 +2,7 @@
 local api = vim.api
 
 local function augroup(name)
-  return api.nvim_create_augroup("core_" .. name)
+  return api.nvim_create_augroup("core_" .. name, { clear = true })
 end
 
 -- yank highlight
