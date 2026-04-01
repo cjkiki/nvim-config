@@ -1,4 +1,5 @@
 return {
+  -- autopairs
   {
     "windwp/nvim-autopairs",
     event  = "InsertEnter",
@@ -14,6 +15,7 @@ return {
     },
   },
 
+  -- comment
   {
     "numToStr/Comment.nvim",
     opts = {
@@ -42,5 +44,6 @@ return {
     },
   },
 
+  -- utility
   { "nvim-lua/plenary.nvim", lazy = true },
 }
