@@ -28,7 +28,7 @@ end
 i("jk", "<Esc>", "Exit insert mode")
 n("Y",  "y$",    "Yank to EOL")
 n("J",  "mzJ`z", "Connect lines")
-v("P", '"_dP',   "Yank (no register)")
+v("P", '"_dP',   "Paste (no register)")
 v("D", '"_d',    "Delete (no register)")
 
 -- navigation
@@ -64,7 +64,7 @@ n("<leader>bo", "<cmd>%bd|e#|bd#<CR>", "Delete all other buffers")
 -- splits
 n("<leader>sv", "<C-w>v",         "Split vertically")
 n("<leader>sh", "<C-w>s",         "Split horizontally")
-n("<leader>se", "<C-w>=",         "Equalize splits")
+n("<leader>se", "<C-w>=",         "Equalize split size")
 n("<leader>sx", "<cmd>close<CR>", "Close split")
 
 n("<C-h>", "<C-w>h", "Split left")
