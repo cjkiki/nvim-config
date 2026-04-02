@@ -10,7 +10,6 @@ return {
       ts_config = {
         lua = { "string" },
         c   = { "comment" },
-        cpp = { "comment" },
       },
     },
   },

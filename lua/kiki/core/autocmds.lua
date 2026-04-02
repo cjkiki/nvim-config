@@ -2,7 +2,7 @@
 local api = vim.api
 
 local function augroup(name)
-  return api.nvim_create_augroup("core_" .. name, { clear = true })
+  return api.nvim_create_augroup("kiki_" .. name, { clear = true })
 end
 
 -- yank highlight
@@ -25,7 +25,7 @@ api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- remove trailing whitespace when saving
+-- strip trailing whitespace on save
 api.nvim_create_autocmd("BufWritePre", {
   group    = augroup("trim_whitespace"),
   callback = function()
@@ -37,7 +37,7 @@ api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
--- align split by terminal resize
+-- resize splits when terminal is resized
 api.nvim_create_autocmd("VimResized", {
   group    = augroup("resize_splits"),
   callback = function()
@@ -47,34 +47,35 @@ api.nvim_create_autocmd("VimResized", {
   end,
 })
 
--- deactivate syntax highlighting with large files (> 1MiB)
+-- close these filetypes with q
+api.nvim_create_autocmd("FileType", {
+    group    = augroup("help_q"),
+    pattern  = { "help", "man", "qf", "checkhealth", "lspinfo" },
+    callback = function()
+        vim.keymap.set("n", "q", "<cmd>close<CR", { buffer = true, silent = true })
+    end,
+})
+
+-- detect large files (> 1MiB) disable heavy features
 api.nvim_create_autocmd("BufReadPre", {
   group    = augroup("large_files"),
   callback = function(ev)
     local ok, stat = pcall(vim.loop.fs_stat, ev.match)
     if ok and stat and stat.size > 1024 * 1024 then
-      vim.opt_local.syntax   = "off"
-      vim.opt_local.filetype = ""
+      vim.b.large_file       = true
       vim.opt_local.swapfile = false
       vim.opt_local.undofile = false
-      vim.b.large_file       = true
-      vim.notify(
-        ("Large file (%s) - syntax highlight deactivated"):format(
-          vim.fn.fnamemodify(ev.match, ":t")
-        ), vim.log.levels.WARN
-      )
     end
   end,
 })
 
--- help / man / qf - q to exit
-api.nvim_create_autocmd("FileType", {
-  group    = augroup("help_q"),
-  pattern  = { "help", "man", "qf", "checkhealth" },
+-- check for file changes when focus returns
+api.nvim_create_autocmd({ "FocusGained", "TermLeave" }, {
+  group    = augroup("checktime"),
   callback = function()
-    vim.keymap.set("n", "q", "<cmd>close<CR", {
-      buffer = true, silent = true
-    })
+    if vim.o.buftype ~= "nofile" then
+      vim.cmd("checktime")
+    end
   end,
 })
 
