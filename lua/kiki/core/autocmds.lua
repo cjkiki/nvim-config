@@ -52,7 +52,7 @@ api.nvim_create_autocmd("FileType", {
     group    = augroup("help_q"),
     pattern  = { "help", "man", "qf", "checkhealth", "lspinfo" },
     callback = function()
-        vim.keymap.set("n", "q", "<cmd>close<CR", { buffer = true, silent = true })
+        vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = true, silent = true })
     end,
 })
 
