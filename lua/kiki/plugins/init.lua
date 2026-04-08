@@ -19,6 +19,7 @@ require("lazy").setup({
   { import = "kiki.plugins.ui" },
   { import = "kiki.plugins.editor" },
   { import = "kiki.plugins.treesitter" },
+  { import = "kiki.plugins.formatter" },
   { import = "kiki.plugins.git" },
 }, {
   defaults         = { lazy = true },
