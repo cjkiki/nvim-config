@@ -13,6 +13,7 @@ return {
 
       require "nvim-treesitter" .install({
         "c",
+        "rust",
         "cpp",
         "lua",
         "html",
@@ -25,12 +26,15 @@ return {
         "prisma",
         "graphql",
         "json",
+        "http",
         "bash",
         "make",
         "diff",
         "editorconfig",
         "gitcommit",
         "gitignore",
+        "dockerfile",
+        "dot",
         "luadoc",
         "toml",
         "yaml",
